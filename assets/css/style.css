@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html,body, #__nuxt, #__layout{
+        @apply h-full;
+    }
+    body {
+        @apply overflow-hidden;
+    }
+}
+
+@layer components {
+    .btn-header {
+        @apply text-sm font-semibold leading-6 text-gray-300;
+        @apply text-white hover:ring-1 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5
+        text-center inline-flex items-center me-2 mb-2;
+    }
+
+    .btn-menu {
+        @apply -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-gray-600;
+        @apply flex items-center;
+    }
+
+    .main-gradient {
+        @apply relative aspect-[1155/678] -translate-x-1/2 bg-gradient-to-tr from-[#5e082c] to-[#3a3766] opacity-30 w-[36.125rem] sm:w-[72.1875rem];
+    }
+
+    .list-group {
+        @apply text-sm font-medium border rounded-lg bg-gray-700 border-gray-600 text-white;
+    }
+
+    .list-group-item {
+        @apply w-full px-4 py-2 font-medium text-left border-b border-gray-600 cursor-pointer
+        focus:outline-none focus:ring-2 focus:ring-gray-500 focus:text-white
+        hover:bg-gray-600 hover:text-white;
+    }
+    .list-group-item.item-disabled {
+        @apply cursor-not-allowed bg-gray-600 text-gray-400;
+    }
+    .list-group-item.item-active {
+        @apply cursor-pointer focus:outline-none bg-gray-800 border-gray-600;
+    }
+
+    .vert-btn-group {
+        @apply px-4 py-2 text-sm font-medium
+        focus:z-10 focus:ring-2
+        bg-gray-800 border-gray-700 text-white
+        hover:text-white hover:bg-gray-700 focus:ring-blue-500 focus:text-white;
+    }
+    .vert-btn-group.item-active {
+        @apply bg-indigo-600;
+    }
+}
