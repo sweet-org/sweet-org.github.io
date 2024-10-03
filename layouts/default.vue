@@ -2,14 +2,14 @@
 </script>
 
 <template>
-  <div class="h-full bg-slate-800">
+  <div class="min-h-full bg-slate-800">
     <header class="absolute inset-x-0 top-0 z-50">
       <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
         <div class="flex lg:flex-1">
-          <a class="-m-1.5 p-1.5" href="#">
+          <NuxtLink class="-m-1.5 p-1.5" to="/">
             <span class="sr-only">SWEET</span>
-            <img alt="" class="h-8 w-auto" src="/img/logo-transparent.svg">
-          </a>
+            <NuxtImg alt="" class="h-8 w-auto" src="/img/logo-transparent.svg" />
+          </NuxtLink>
         </div>
         <!-- Mobile menu button-->
         <div class="flex lg:hidden">
@@ -27,14 +27,16 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
           <!-- Normal header buttons -->
-          <a class="btn-header" href="#">Downloads</a>
-          <a class="btn-header" href="#">Privacy</a>
+          <NuxtLink class="btn-header" to="/">Home</NuxtLink>
+          <NuxtLink class="btn-header" to="/downloads">Downloads</NuxtLink>
+          <NuxtLink class="btn-header" to="/privacy">Privacy</NuxtLink>
+          <NuxtLink class="btn-header" to="/changelist">Changelist</NuxtLink>
           <a class="btn-header" href="https://github.com/sweet-org/sweet">
-            <img alt="" class="w-4 h-4 me-2" src="../public/img/branding/github-mark-white.svg"/>
+            <NuxtImg alt="" class="w-4 h-4 me-2" src="../public/img/branding/github-mark-white.svg"/>
             Sources
           </a>
           <a class="btn-header" href="https://discord.gg/JTTdU7A3rA">
-            <img alt="" class="w-4 h-4 me-2" src="../public/img/branding/discord-logo-white.svg">
+            <NuxtImg alt="" class="w-4 h-4 me-2" src="../public/img/branding/discord-logo-white.svg" />
             Discord
           </a>
         </div>
@@ -43,7 +45,7 @@
         </div>
       </nav>
       <!-- Mobile menu, show/hide based on menu open state. -->
-      <div id="drawer-navigation" aria-modal="true" class="lg:hidden" role="dialog">
+      <div id="drawer-navigation" aria-modal="true" class="lg:hidden transition-transform right-0 top-0 -translate-x-full" role="dialog">
         <!-- Background backdrop, show/hide based on slide-over state. -->
         <div class="fixed inset-0 z-50"></div>
         <div
@@ -51,8 +53,8 @@
           <div class="flex items-center justify-between">
             <a class="-m-1.5 p-1.5" href="#">
               <span class="sr-only">Your Company</span>
-              <img alt="" class="h-8 w-auto"
-                   src="/img/logo-transparent.svg">
+              <NuxtImg alt="" class="h-8 w-auto"
+                   src="/img/logo-transparent.svg" />
             </a>
             <button class="-m-2.5 rounded-md p-2.5 text-gray-300" data-drawer-hide="drawer-navigation"
                     type="button">
@@ -66,14 +68,16 @@
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a class="btn-menu" href="#">Downloads</a>
-                <a class="btn-menu" href="#">Privacy</a>
+                <NuxtLink class="btn-menu" to="/">Home</NuxtLink>
+                <NuxtLink class="btn-menu" to="/downloads">Downloads</NuxtLink>
+                <NuxtLink class="btn-menu" to="/privacy">Privacy</NuxtLink>
+                <NuxtLink class="btn-menu" to="/changelist">Changelist</NuxtLink>
                 <a class="btn-menu" href="https://github.com/sweet-org/sweet">
-                  <img alt="" class="w-4 h-4 me-2" src="/img/branding/github-mark-white.svg"/>
+                  <NuxtImg alt="" class="w-4 h-4 me-2" src="/img/branding/github-mark-white.svg"/>
                   Sources
                 </a>
                 <a class="btn-menu" href="https://discord.gg/JTTdU7A3rA">
-                  <img alt="" class="w-4 h-4 me-2" src="/img/branding/discord-logo-white.svg">
+                  <NuxtImg alt="" class="w-4 h-4 me-2" src="/img/branding/discord-logo-white.svg" />
                   Discord
                 </a>
               </div>
@@ -82,18 +86,18 @@
         </div>
       </div>
     </header>
-    <div class="relative isolate px-6 pt-14 lg:px-8">
+    <div class="relative isolate px-6 pt-16 lg:px-8 h-fit">
       <!-- Black css magic (backgroundy stuff)-->
       <div aria-hidden="true"
-           class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+           class="h-full absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
         <div class="main-gradient left-[calc(50%-11rem)]  rotate-[30deg] sm:left-[calc(50%-30rem)]"
              style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
       </div>
       <slot/>
       <!-- The same but a little bit different css magic -->
       <div
-          aria-hidden="true"
-          class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+          aria-hidden="true" style="max-height: inherit"
+          class="max-h-full absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)] bottom-0">
         <div class="main-gradient left-[calc(50%+3rem)] sm:left-[calc(50%+36rem)]"
              style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
       </div>
