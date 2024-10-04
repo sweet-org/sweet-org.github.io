@@ -1,75 +1,32 @@
-# Nuxt 3 Minimal Starter
+# Sweet Download page
+This is the download page for sweet. It can be found at [sweet-org.github.io](https://sweet-org.github.io/).
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Building
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about Nuxt and for more build options.
+
+The deploy workflow can be found at [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+Refer to the Nuxt [documentation](https://nuxt.com/deploy/github-pages) for more information about deploying to github pages.
 
 ## Setup
-
-Make sure to install the dependencies:
-
+Install the dependencies:
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
-
 Start the development server on `http://localhost:3000`:
-
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
-
-Build the application for production:
-
+This is designed for static hosting (e.g. Github Pages). Use this command to build all required files for page
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+nuxi generate
 ```
 
-Locally preview production build:
-
+It will generate the `.output/public` folder, containing everything that is required to host the page.
+To preview the build locally, run
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+npx serve .output/public
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
