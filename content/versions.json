@@ -10,19 +10,37 @@
       "name": "Windows",
       "key": "windows",
       "needsFormatting": true,
-      "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-windows.zip"
+      "url": "https://sweet.silkypants.dev/releases/sweet_232-winodws.zip",
+      "urls": [
+        {
+          "maxVersion": "0.3.5",
+          "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-windows.zip"
+        }
+      ]
     },
     {
       "name": "MacOS",
       "key": "macos",
       "needsFormatting": true,
-      "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-macos.zip"
+      "url": "https://sweet.silkypants.dev/releases/sweet_232-macos.zip",
+      "urls": [
+        {
+          "maxVersion": "0.3.5",
+          "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-macos.zip"
+        }
+      ]
     },
     {
       "name": "Linux",
       "key": "linux",
       "needsFormatting": true,
-      "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-linux.zip"
+      "url": "https://sweet.silkypants.dev/releases/sweet_232-linux.zip",
+      "urls": [
+        {
+          "maxVersion": "0.3.5",
+          "url": "https://s3.blaumeise03.de/sweet-db/releases/sweet_{buildNum}-linux.zip"
+        }
+      ]
     },
     {
       "name": "Android",
@@ -33,27 +51,37 @@
   ],
   "downloads": {
     "windows": {
+      "0.3.6": 232,
       "0.3.5": 230,
       "0.3.4": 225,
       "0.3.3": 222
     },
     "macos": {
+      "0.3.6": 232,
       "0.3.5": 230,
       "0.3.4": 225,
       "0.3.3": 222
     },
     "linux": {
+      "0.3.6": 232,
       "0.3.5": 230,
       "0.3.4": 225,
       "0.3.3": 222
     },
     "android": {
+      "0.3.6": 232,
       "0.3.5": 229,
       "0.3.4": 226,
       "0.3.3": 222
     }
   },
   "versions": [
+    {
+      "name": "0.3.6",
+      "branch": "stable",
+      "releaseDate": "2024-10-06",
+      "buildNum": 232
+    },
     {
       "name": "0.3.5",
       "branch": "beta",
