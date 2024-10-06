@@ -19,10 +19,13 @@
           {{ os.name }}
         </button>
       </div>
-      <div v-if="selectedOs != null && !selectedOs.needsFormatting" class="text-center mb-8">
-        <a class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+      <div v-if="selectedOs != null && !selectedOs.needsFormatting" class="text-center flex justify-center items-center mb-8">
+        <a v-if="selectedOs.key != 'android'" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
            :href="getDownloadURL">
           Download from store
+        </a>
+        <a v-else :href="getDownloadURL" class="flex-none">
+          <img width="200em" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
         </a>
       </div>
       <div class="flex flex-wrap-reverse justify-around place-items-start">
@@ -79,8 +82,9 @@
         <p class="font-normal text-gray-400 italic">Please contact an administrator if this issue persists.</p>
       </div>
     </div>
-    <h2>Changelist</h2>
     <ContentRenderer :value="data" class="markdown mt-4"/>
+    <br>
+    <p class="text-gray-500 text-sm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   </div>
 </template>
 
@@ -154,15 +158,51 @@ if (!String.prototype.formatted) {
   };
 }
 
+function compareVersions(v1, v2) {
+  if (v1 == v2) return 0;
+  const v1parts = v1.split('.');
+  const v2parts = v2.split('.');
+
+  for (let i = 0; i < v1parts.length; ++i) {
+    if (v2parts.length == i) return 1;
+    if (v1parts[i] == v2parts[i]) continue;
+    if (parseInt(v1parts[i]) > parseInt(v2parts[i])) return 1;
+    return -1;
+  }
+  return -1;
+}
+
 const getDownloadURL = computed(() => {
   if (selectedOs == null) {
     return null
   }
+  let urlStr = null;
+  let maxVersion = null;
+  if (selectedOs.value.urls != undefined) {
+    for (let url of selectedOs.value["urls"]) {
+      // console.log("Comparing %s with %s", url["maxVersion"], selectedVersion.value["name"]);
+      if (compareVersions(url["maxVersion"], selectedVersion.value["name"]) >= 0) {
+        if (urlStr == null) {
+          urlStr = url["url"];
+          maxVersion = url["maxVersion"];
+        } else if (compareVersions(url["maxVersion"], urlStr["maxVersion"]) < 0) {
+          urlStr = url["url"];
+          maxVersion = url["maxVersion"];
+        }
+      }
+    }
+    if (urlStr == null) {
+      urlStr = selectedOs.value["url"];
+    }
+    console.log("Selected URL for version %s or below: %s", maxVersion, urlStr);
+  } else {
+    urlStr = selectedOs.value["url"];
+  }
   if (!selectedOs.value['needsFormatting']) {
     console.log("Selected OS does not need formatting: %s", selectedOs.value.url);
-    return selectedOs.value.url;
+    return urlStr;
   }
-  const url = selectedOs.value["url"].formatted({
+  const url = urlStr.formatted({
     "name": selectedVersion.value["name"],
     "branch": selectedVersion.value["branch"],
     "releaseDate": selectedVersion.value["releaseDate"],
