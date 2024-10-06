@@ -81,6 +81,13 @@
                 @apply text-inherit no-underline hover:underline;
             }
         }
+        h4 {
+            @apply font-semibold leading-6 text-gray-200
+            py-1;
+            a{
+                @apply text-inherit no-underline hover:underline;
+            }
+        }
         p {
             @apply text-gray-300 pb-1;
         }
