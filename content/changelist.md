@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed issues where it was not possible to rename characters if the total implant levels is set to 0
 - Fixed attribute calculations for drones/fighters (again)
 - Fixed missing missile range attribute
+- Fixed market browser search bar
 
 ### [0.3.6]
 #### Added
