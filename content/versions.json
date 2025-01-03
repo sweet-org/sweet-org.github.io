@@ -10,7 +10,7 @@
       "name": "Windows",
       "key": "windows",
       "needsFormatting": true,
-      "url": "https://sweet.silkypants.dev/releases/sweet_232-windows.zip",
+      "url": "https://sweet.silkypants.dev/releases/sweet_{buildNum}-windows.zip",
       "urls": [
         {
           "maxVersion": "0.3.5",
@@ -22,7 +22,7 @@
       "name": "MacOS",
       "key": "macos",
       "needsFormatting": true,
-      "url": "https://sweet.silkypants.dev/releases/sweet_232-macos.zip",
+      "url": "https://sweet.silkypants.dev/releases/sweet_{buildNum}-macos.zip",
       "urls": [
         {
           "maxVersion": "0.3.5",
@@ -34,7 +34,7 @@
       "name": "Linux",
       "key": "linux",
       "needsFormatting": true,
-      "url": "https://sweet.silkypants.dev/releases/sweet_232-linux.zip",
+      "url": "https://sweet.silkypants.dev/releases/sweet_{buildNum}-linux.zip",
       "urls": [
         {
           "maxVersion": "0.3.5",
