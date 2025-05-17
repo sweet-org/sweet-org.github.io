@@ -15,6 +15,9 @@
 import {onMounted} from 'vue';
 import {useFlowbite} from '~/composables/useFlowbite';
 
+const config = useRuntimeConfig();
+const googleSiteVerification = config.public.googleSiteVerification;
+
 const baseUrl = useRequestURL().hostname;
 
 useSeoMeta({
@@ -26,6 +29,7 @@ useSeoMeta({
   ogImage: `https://${baseUrl}/img/logo-transparent.png`,
   ogUrl: `https://${baseUrl}/`,
   //twitterCard: 'summary_large_image',
+  googleSiteVerification: googleSiteVerification
 })
 
 // initialize components based on data attribute selectors

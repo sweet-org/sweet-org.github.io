@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     },
     ssr: true,
     runtimeConfig: {
-        public: {},
+        public: {
+            googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'N/A',
+        },
     },
     app: {
         header: {
