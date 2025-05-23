@@ -3,8 +3,12 @@
     <div class="text-center">
       <h1 class="text-2xl font-bold tracking-tight text-gray-300 sm:text-6xl">Downloads</h1>
       <p class="mt-6 mb-4 text-lg leading-8 text-gray-300">
-        The Eve Echoes fitting calculator. It allows you to create skill and implant profiles, create ship
-        fittings and will show you the calculated values for the attributes of the selected items.
+        Download the latest version of SWEET for your platform. Supported platforms are Windows 10 + 11, MacOS, Linux
+        and Android. The database is updated by the app itself for new items. Make sure to keep the app up to date, old
+        versions may not work with the latest database.
+      </p>
+      <p class="mt-6 mb-4 text-lg leading-8 text-gray-300">
+        If you have any questions or bug reports, please join our Discord.
       </p>
 
     </div>
