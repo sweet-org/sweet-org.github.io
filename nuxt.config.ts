@@ -5,8 +5,11 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         //'@nuxtjs/device',
+        '@nuxtjs/seo',
+        '@nuxtjs/sitemap',  // Must be before @nuxt/content
         '@nuxt/content',
-        '@nuxt/image'
+        '@nuxt/image',
+        'nuxt-og-image'
     ],
     css: ['~/assets/css/style.css'],
     postcss: {
@@ -25,5 +28,14 @@ export default defineNuxtConfig({
         header: {
             link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
         },
+    },
+    nitro: {
+        prerender: {
+            //routes: ['/sitemap.xml']
+        }
+    },
+    site: {
+        //url: 'https://sweet-org.github.io',
+        name: 'SWEET Homepage'
     },
 })

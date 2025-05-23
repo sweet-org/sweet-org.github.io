@@ -86,7 +86,7 @@
         <p class="font-normal text-gray-400 italic">Please contact an administrator if this issue persists.</p>
       </div>
     </div>
-    <ContentRenderer :value="data" class="markdown mt-4"/>
+    <ContentRenderer v-if="data" :value="data" class="markdown mt-4"/>
     <br>
     <p class="text-gray-500 text-sm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   </div>
@@ -94,37 +94,43 @@
 
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue'
+import versionData from 'public/versions.json'
 
-const versions = ref([]);
+const versions: Ref = ref([]);
 const notifications = ref({});
-const operatingSystems = ref(null);
+const operatingSystems: Ref = ref(null);
 const selectedVersion = ref(null);
 const selectedOs = ref(null);
 const isLoading = ref(true);
 const errorMsg = ref(null);
 let downloadBuildNums = {};
 
+versions.value = versionData.versions;
+notifications.value = versionData.notifications;
+operatingSystems.value = versionData.operatingSystems;
+downloadBuildNums = versionData.downloads;
+isLoading.value = false;
 
-useAsyncData("versions", () => queryContent('/versions').findOne()).then(({data, error}) => {
-  if (error.value != null) {
-    console.error("Error while fetching versions: %s", error);
-    console.log(error.name);
-    errorMsg.value = `${error.name} while fetching versions: ${error.status}: ${error.statusText}`;
-    return;
-  }
-  for (let v in data.value['version']) {
-    v['available'] = false;
-  }
-  versions.value = data.value['versions'];
-  notifications.value = data.value['notifications'];
-  operatingSystems.value = data.value['operatingSystems'];
-  downloadBuildNums = data.value['downloads'];
-
-}).catch((error) => {
-  console.error("Error while fetching versions: %s", error);
-}).finally(() => {
-  isLoading.value = false;
-});
+//useFetch("/versions.json").then(({data, error}) => {
+//  if (error.value != null) {
+//    console.error("Error while fetching versions: %s", error);
+//    console.log(error.name);
+//    errorMsg.value = `${error.name} while fetching versions: ${error.status}: ${error.statusText}`;
+//    return;
+//  }
+//  for (let v in data.value['version']) {
+//    v['available'] = false;
+//  }
+//  versions.value = data.value['versions'];
+//  notifications.value = data.value['notifications'];
+//  operatingSystems.value = data.value['operatingSystems'];
+//  downloadBuildNums = data.value['downloads'];
+//  console.log("Received versions: %s", data.value);
+//}).catch((error) => {
+//  console.error("Error while fetching versions: %s", error);
+//}).finally(() => {
+//  isLoading.value = false;
+//});
 // Does not work for static sites
 /*let osKey = null;
 const { isWindows, isMacOS, isLinux, isAndroid, isIos } = useDevice();
@@ -147,7 +153,7 @@ for (let os of operatingSystems.value) {
   }
 }*/
 
-const {data} = await useAsyncData('changelist', () => queryContent('changelist').findOne())
+const {data} = await useAsyncData('changelist', () => queryCollection('content').path('changelist').first())
 
 if (!String.prototype.formatted) {
   String.prototype.formatted = function() {
