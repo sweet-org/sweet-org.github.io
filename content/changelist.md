@@ -4,10 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [0.3.10]
+#### Added
+- Added special rig slot for defensive rigs
+- Re-added market api to fetch and display current item prices
+
+#### Changes
+- Added indentations to the item-selection dialog to better visualize the market group hierarchy
+- Merged new iOS build config into main
+- Removed local notification service due build issues
+- Updated gradle plugins to latest versions
+- Dropped support for Android 6 (API level 23) and below (due to Flutter requirements)
+
+#### Fixed
+- Fixed changes in static data regarding non-stackable modifiers and new modifier change types
+- Fixed search bar for ships not working, for items only partially fixed
+- Fixed the total implant levels of a character resetting to zero when entering edit mode
+- Fixed long items name overflowing outside of their containers in some places
+
 ### [0.3.9]
 #### Added
 - Added lightweight Cruisers + BC
-- Added skill modifier cache to remove the need for expensive string lookups
+- Added skill modifier cache to to remove the need for expensive string lookups
 - Added index for items by market groups to speedup loading times
 #### Fixed
 - Fixed reactive implants units (they were added to the wrong implant type previously)
