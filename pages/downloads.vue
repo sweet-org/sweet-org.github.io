@@ -3,8 +3,9 @@
     <div class="text-center">
       <h1 class="text-2xl font-bold tracking-tight text-gray-300 sm:text-6xl">Downloads</h1>
       <p class="mt-6 mb-4 text-lg leading-8 text-gray-300">
-        Download the latest version of SWEET for your platform. Supported platforms are Windows 10 + 11, MacOS, Linux
-        and Android. The database is updated by the app itself for new items. Make sure to keep the app up to date, old
+        Download the latest version of SWEET for your platform. Supported platforms are Windows 10 + 11, MacOS, Linux,
+        Android and iOS.
+        The database is updated by the app itself for new items. Make sure to keep the app up to date, old
         versions may not work with the latest database.
       </p>
       <p class="mt-6 mb-4 text-lg leading-8 text-gray-300">
@@ -24,12 +25,15 @@
         </button>
       </div>
       <div v-if="selectedOs != null && !selectedOs.needsFormatting" class="text-center flex justify-center items-center mb-8">
-        <a v-if="selectedOs.key != 'android'" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        <a v-if="selectedOs.key == 'android'" :href="getDownloadURL" class="flex-none">
+          <img width="200em" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+        </a>
+        <p v-else-if="selectedOs.key == 'ios'" class="flex-none text-gray-300">
+            iOS downloads are currently only available via TestFlight. Please join our Discord for more information.
+        </p>
+        <a v-else class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
            :href="getDownloadURL">
           Download from store
-        </a>
-        <a v-else :href="getDownloadURL" class="flex-none">
-          <img width="200em" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
         </a>
       </div>
       <div class="flex flex-wrap-reverse justify-around place-items-start">
@@ -52,10 +56,13 @@
             <div class="flex-none py-0.5 border-b border-gray-500 text-left">Date: {{ selectedVersion.releaseDate }}</div>
             <div class="flex-none py-0.5 border-b border-gray-500 text-left">Branch: {{ selectedVersion.branch }}</div>
             <div class="flex-none py-0.5 border-b border-gray-500 text-left">Build: {{ getBuildNum() }}</div>
-            <a class="flex-none mt-2 mb-4 py-1 text-gray-800 bg-emerald-400 rounded-xl hover:bg-emerald-500 shadow-lg shadow-cyan-800/80"
+            <a v-if="getDownloadURL != null" class="flex-none mt-2 mb-4 py-1 text-gray-800 bg-emerald-400 rounded-xl hover:bg-emerald-500 shadow-lg shadow-cyan-800/80"
                :href="getDownloadURL">
               Download
             </a>
+            <p v-else class="flex-none mt-2 mb-4 py-1 text-gray-300">
+              Not available for download
+            </p>
           </div>
           <div class="list-group flex flex-col grow px-4" v-else>
             <div class="flex-none py-0.5 pb-1 text-left text-xl">No version selected</div>
