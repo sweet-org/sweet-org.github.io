@@ -47,6 +47,12 @@
       "key": "android",
       "needsFormatting": false,
       "url": "https://play.google.com/store/apps/details?id=dev.sillykat.eve.sweet"
+    },
+    {
+        "name": "iOS",
+        "key": "ios",
+        "needsFormatting": false,
+        "url": null
     }
   ],
   "downloads": {
@@ -89,6 +95,10 @@
       "0.3.5": 229,
       "0.3.4": 226,
       "0.3.3": 222
+    },
+    "ios": {
+      "0.3.10": 9,
+      "0.3.9": 8
     }
   },
   "versions": [
