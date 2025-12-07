@@ -6,7 +6,7 @@
   <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
     <div class="hidden sm:mb-8 sm:flex sm:justify-center">
       <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-300 ring-1 ring-gray-500/10 hover:ring-gray-300/20">
-        Implant beta is live! <NuxtLink class="font-semibold text-indigo-600" to="/downloads"><span
+        iOS version is available again! <NuxtLink class="font-semibold text-indigo-600" to="/downloads"><span
           aria-hidden="true" class="absolute inset-0"></span>Download <span
           aria-hidden="true">&rarr;</span></NuxtLink>
       </div>
