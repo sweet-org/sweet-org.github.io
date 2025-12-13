@@ -28,9 +28,10 @@
         <a v-if="selectedOs.key == 'android'" :href="getDownloadURL" class="flex-none">
           <img width="200em" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
         </a>
-        <p v-else-if="selectedOs.key == 'ios'" class="flex-none text-gray-300">
-            iOS downloads are currently only available via TestFlight. Please join our Discord for more information.
-        </p>
+        <a v-else-if="selectedOs.key == 'ios'" class="flex-none" href="https://apps.apple.com/us/app/s-w-e-e-t/id1664398994?itscg=30200&itsct=apps_box_badge&mttnsubad=1664398994" style="display: inline-block;">
+          <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1673827200" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
+        </a>
+
         <a v-else class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
            :href="getDownloadURL">
           Download from store

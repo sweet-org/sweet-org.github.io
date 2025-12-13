@@ -52,7 +52,7 @@
         "name": "iOS",
         "key": "ios",
         "needsFormatting": false,
-        "url": null
+        "url": "https://apps.apple.com/us/app/s-w-e-e-t/id1664398994"
     }
   ],
   "downloads": {
@@ -97,7 +97,7 @@
       "0.3.3": 222
     },
     "ios": {
-      "0.3.10": 9,
+      "0.3.10": 12,
       "0.3.9": 8
     }
   },
